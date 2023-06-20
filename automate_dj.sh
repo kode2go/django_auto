@@ -34,4 +34,4 @@ awk '/"DIRS":/ {$0 = "        \"DIRS\": [os.path.join(BASE_DIR, \x27templates\x2
 awk '/from pathlib import Path/ {print; print "import os"; next} 1' $project_name/settings.py > $project_name/temp.py && mv $project_name/temp.py $project_name/settings.py
 
 mkdir -p app/templates/
-echo "<p>Salaams</p>" > app/templates/index.html
+echo "<p>Test Project</p>" > app/templates/index.html
