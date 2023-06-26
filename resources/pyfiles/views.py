@@ -8,6 +8,9 @@ from django import forms
 from .models import Person
 
 
+
+
+
 def index(request):
     context = {}
     return render(request, 'index.html', context)
@@ -94,3 +97,10 @@ def register_view(request):
         form = UserCreationForm()
     
     return render(request, 'register.html', {'form': form})
+
+from rest_framework import generics
+from .serializers import PersonSerializer
+
+class PersonListView(generics.ListAPIView):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer

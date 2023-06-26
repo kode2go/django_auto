@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
+from .views import PersonListView
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('persons/', PersonListView.as_view(), name='person-list'),
 ]
 
 urlpatterns += [
