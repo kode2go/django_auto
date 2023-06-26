@@ -3,6 +3,14 @@
 # Prompt for project name
 read -p "Enter project name: " project_name
 
+# Prompt for installing requirements
+read -p "Do you want to install the project requirements? (y/n): " install_requirements
+
+if [ "$install_requirements" = "y" ]; then
+    # Install project dependencies
+    pip install -r requirements.txt
+fi
+
 # Create Django project
 django-admin startproject $project_name
 
