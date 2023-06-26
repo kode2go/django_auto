@@ -69,6 +69,22 @@ def update_person(request):
 
     return render(request, 'profile.html', {'form': form})
 
+def send_login_email(username):
+    from postmarker.core import PostmarkClient
+    from django.utils import timezone
+
+    try:
+        postmark = PostmarkClient(server_token='API-TOKEN')
+        postmark.emails.send(
+            From='info@email.com',
+            To='info@email.com',
+            Subject='Postmark test',
+            HtmlBody=f'The user {username} logged in at {timezone.now()}'
+        )
+        print("Login email sent")
+    except postmarker.core.PostmarkException as e:
+        print("Failed to send login email:", str(e))
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -76,6 +92,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
+            send_login_email(username)
             return redirect('index')  # Replace 'home' with the name of your home page URL
         else:
             messages.error(request, 'Invalid username or password.')
