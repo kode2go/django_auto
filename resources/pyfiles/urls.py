@@ -42,3 +42,7 @@ urlpatterns += [
 urlpatterns += [
     path('update_person/', views.update_person, name='profile'),
 ]
+
+urlpatterns += [
+    path('vue_api/', views.vue_api, name='vue_api'),
+]
