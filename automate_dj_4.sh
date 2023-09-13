@@ -60,16 +60,30 @@ from datetime import date
 from app.models import Person
 
 # Create User
-user = User.objects.create_user(username='user1', password='1234')
+user1 = User.objects.create_user(username='user1', password='1234')
+user2 = User.objects.create_user(username='user1', password='1234')
 
 # Create Person
 person = Person.objects.create(
-    user=user,
+    user=user1,
     first_name='Dummy',
     last_name='Person',
     email='1@example.com',
     date_of_birth=date(1990, 1, 1),
     education_field='Computer Science',
+    degree='Bachelor',
+    university='Dummy University',
+    graduation_year=2020
+)" | python manage.py shell
+
+# Create Person
+person = Person.objects.create(
+    user=user2,
+    first_name='Tony',
+    last_name='Stark',
+    email='2@example.com',
+    date_of_birth=date(1991, 1, 1),
+    education_field='Bio Science',
     degree='Bachelor',
     university='Dummy University',
     graduation_year=2020
