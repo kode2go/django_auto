@@ -9,9 +9,11 @@ dj_1:
 - baseline
 
 dj_2:
+- Manual process of writing to urls.py and views.py:
+-- Create url links in script for urls.py
+-- Add view functions views.py file
 - Copied all templates and static to app folders
-- Create url links in script for urls.py
-- Add view functions views.py file
+
 
 dj_3:
 - Created pyfiles folder, and copy that to app/ directory
