@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... other head content ... -->
+    {% load static %}
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- ... your existing HTML content ... -->
+    <p>Hello world</p>
+
+    <div id="vue-app">
+        <p v-for="person in persons" :key="person.id">
+            <strong>Person ID:</strong> [[ person.id ]]
+            <br>
+            <strong>First Name:</strong> [[ person.first_name ]]
+        </p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            delimiters: ["[[", "]]"],
+            el: '#vue-app',
+            data: {
+                persons: [],
+            },
+            mounted: function() {
+                // Log that the component is mounted
+                console.log('Vue component mounted.');
+
+                // Make an API request to your Django API endpoint
+                axios.get('/persons/')  // Use the correct URL for your Django API endpoint
+                    .then(response => {
+                        // Log only the first_name and last_name properties from the API response
+                        console.log('API Response:', response.data);
+
+                        // Update the persons array with the API response data
+                        this.persons = response.data.map(person => ({
+                            id: person.id,
+                            first_name: person.first_name,
+                        }));
+                    })
+                    .catch(error => {
+                        // Log any errors
+                        console.error('Error fetching data:', error);
+                    });
+            }
+        })
+    </script>
+</body>
+</html>
