@@ -121,3 +121,7 @@ from .serializers import PersonSerializer
 class PersonListView(generics.ListAPIView):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+
+def vue_api(request):
+    context = {}
+    return render(request, 'vue_api.html', context)
