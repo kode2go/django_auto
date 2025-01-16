@@ -4,6 +4,14 @@ Ever wanted to get up and running with Django quickly without having to do the s
 Well this is Django Auto. A few simple scripts that automate the fundamental setup of Django so you can get
 to what you really want to do with Django!
 
+These automated scripts are a progression in steps to automate your deployment using bash scripts. This can be improved upon
+with Ansible etc.
+
+For now the final bash script should give you this once you clone the repo and run `./automate_dj_4.sh`:
+
+![image](https://github.com/user-attachments/assets/d1046a39-932d-4e15-bb1f-90cf9af3a671)
+
+
 ## Changes
 dj_1:
 - baseline
